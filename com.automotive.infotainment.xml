@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <privapp-permissions package="com.automotive.infotainment">
+        <permission name="android.car.permission.CAR_SPEED"/>
+        <permission name="android.car.permission.CAR_VENDOR_EXTENSION"/>
+        <permission name="android.permission.INTERNET"/>
+    </privapp-permissions>
+</permissions>

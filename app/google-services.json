@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "527489809865",
+    "project_id": "skoda-3109c",
+    "storage_bucket": "skoda-3109c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527489809865:android:c8945a8a4d82737aee7c18",
+        "android_client_info": {
+          "package_name": "com.automotive.infotainment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGsER6pdk913L3P2ah6CWdtEDqSLp8FNU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

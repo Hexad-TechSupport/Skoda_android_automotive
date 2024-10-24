@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "808864539520",
+    "project_id": "infotainmenthmi-bc15d",
+    "storage_bucket": "infotainmenthmi-bc15d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808864539520:android:7e859a9e9e220a9acd5765",
+        "android_client_info": {
+          "package_name": "com.automotive.infotainment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMTdqYPqJrGdH_39vmF2NeNpB9tdjWDuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

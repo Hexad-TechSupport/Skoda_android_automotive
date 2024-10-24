@@ -1,0 +1,166 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".SpeedTestActivity">
+
+
+    <!-- Row of Icons above the car image -->
+
+
+    <LinearLayout
+        android:id="@+id/icon_row"
+        android:layout_width="500dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="76dp"
+        android:orientation="horizontal"
+        android:paddingTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/car_image"
+        app:layout_constraintEnd_toStartOf="@+id/meter_image"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <!-- Icon door -->
+        <ImageView
+            android:id="@+id/door"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="Door"
+            android:padding="16dp"
+            android:src="@drawable/door" />
+
+        <!-- Icon power (ignition start/stop) -->
+        <ImageView
+            android:id="@+id/power"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="Ignition"
+            android:padding="16dp"
+            android:src="@drawable/power" />
+
+        <!-- Icon fuel -->
+        <ImageView
+            android:id="@+id/fuel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="Fuel"
+            android:padding="16dp"
+            android:src="@drawable/fuel" />
+    </LinearLayout>
+
+    <!-- Car Image -->
+    <ImageView
+        android:id="@+id/car_image"
+        android:layout_width="792dp"
+        android:layout_height="661dp"
+        android:layout_marginStart="-280dp"
+        android:layout_marginBottom="-100dp"
+        android:src="@drawable/car"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        tools:ignore="ContentDescription" />
+
+
+    <!-- Meter Image  -->
+    <ImageView
+        android:id="@+id/meter_image"
+        android:layout_width="742dp"
+        android:layout_height="588dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="68dp"
+
+        android:scaleType="fitCenter"
+        android:src="@drawable/meter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.261"
+        app:layout_constraintWidth_percent="0.7"
+        tools:ignore="ContentDescription" />
+
+    <!-- Speed Display -->
+
+
+    <!-- Alert Banner -->
+
+    <LinearLayout
+        android:id="@+id/speed_display_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/meter_image"
+        app:layout_constraintEnd_toEndOf="@id/meter_image"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/meter_image"
+        app:layout_constraintTop_toTopOf="@id/meter_image"
+        app:layout_constraintVertical_bias="0.523">
+
+        <!-- Speed number -->
+        <TextView
+            android:id="@+id/speed_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/initial_speed"
+            android:textColor="@color/white"
+            android:textSize="200sp"
+            android:textStyle="bold" />
+
+        <!-- Speed unit -->
+        <TextView
+            android:id="@+id/speed_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/mph"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/alert_banner"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/alert"
+            android:padding="16dp"
+            android:visibility="invisible"
+            android:src="@drawable/alert" />
+
+    </LinearLayout>
+
+    <!--    <TextView-->
+<!--        android:id="@+id/alert_banner"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:background="@color/red"-->
+<!--        android:text="Speed Limit Exceeded!"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:gravity="center"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/speed_display_layout"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
