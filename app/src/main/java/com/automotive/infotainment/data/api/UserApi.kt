@@ -22,12 +22,20 @@ interface UserApi {
         @Body speed: Float
     ): Call<Void>
 
-    @POST("vehicles/doorStatus")
-    fun updateDoorStatus(
+    @POST("vehicles/doorLockStatus/open")
+    fun updateDoorLockOpen(
         @Query("vehicleId") vehicleId: String,
-        @Query("credentialId") credentialId: String,
-        @Body doorPosition: Int
+        @Query("credentialId") credentialId: String
     ): Call<Void>
+
+
+    @POST("vehicles/doorLockStatus/close")
+    fun updateDoorLockClose(
+        @Query("vehicleId") vehicleId: String,
+        @Query("credentialId") credentialId: String
+    ): Call<Void>
+
+
 
     @POST("vehicles/ignition/start")
     fun updateIgnitionStart(
