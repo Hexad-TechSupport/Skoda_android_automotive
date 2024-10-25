@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:contentDescription="Door"
+            android:contentDescription="@string/door"
             android:padding="16dp"
             android:src="@drawable/door" />
 
@@ -42,7 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:contentDescription="Ignition"
+            android:contentDescription="@string/ignition"
             android:padding="16dp"
             android:src="@drawable/power" />
 
@@ -52,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:contentDescription="Fuel"
+            android:contentDescription="@string/fuel"
             android:padding="16dp"
             android:src="@drawable/fuel" />
     </LinearLayout>
@@ -142,25 +142,5 @@
             android:src="@drawable/alert" />
 
     </LinearLayout>
-
-    <!--    <TextView-->
-<!--        android:id="@+id/alert_banner"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:background="@color/red"-->
-<!--        android:text="Speed Limit Exceeded!"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:gravity="center"-->
-<!--        android:visibility="gone"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/speed_display_layout"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

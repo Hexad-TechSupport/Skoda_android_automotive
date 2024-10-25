@@ -71,7 +71,6 @@ public class SpeedPropertyHandler extends BasePropertyHandler {
                 handleFuelLevel(fuelLevel);
                 break;
 
-            // Add more logic for other vehicle properties if needed
         }
     }
 
@@ -112,6 +111,5 @@ public class SpeedPropertyHandler extends BasePropertyHandler {
         mSpeedRepository.setFuelLevel(fuelLevel);
         Log.i(TAG, "Fuel level updated: " + fuelLevel + "%");
     }
-
 
 }
