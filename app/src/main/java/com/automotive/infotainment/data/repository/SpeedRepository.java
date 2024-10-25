@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-
 import com.automotive.infotainment.data.api.RetrofitInstance;
 import com.automotive.infotainment.data.api.UserApi;
 import com.automotive.infotainment.data.model.VehicleData;
@@ -45,8 +44,8 @@ public class SpeedRepository {
     }
 
     // Method to fetch vehicle data from the API
-    public void fetchVehicleData() {
-        userApi.getVehicleData().enqueue(new Callback<VehicleData>() {
+    public void fetchVehicleData(String vehicleId, String credentialId) {
+        userApi.getVehicleData(vehicleId, credentialId).enqueue(new Callback<VehicleData>() {
             @Override
             public void onResponse(Call<VehicleData> call, Response<VehicleData> response) {
                 if (response.isSuccessful() && response.body() != null) {

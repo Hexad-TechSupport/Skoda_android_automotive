@@ -10,7 +10,7 @@ public class SpeedViewModel extends ViewModel {
 
     public SpeedViewModel() {
         mSpeedRepository = SpeedRepository.getInstance();
-        mSpeedRepository.fetchVehicleData();  // Fetch vehicle data when the ViewModel is created
+        mSpeedRepository.fetchVehicleData("","");  // Fetch vehicle data when the ViewModel is created
     }
 
     public LiveData<Float> ObserveVehicleSpeed() {
