@@ -1,5 +1,6 @@
 package com.automotive.infotainment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,18 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.automotive.infotainment.vm.SpeedViewModel;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class SpeedTestActivity extends AppCompatActivity {
 
     private static final int FUEL_THRESHOLD = 10;
 
     private SpeedViewModel speedViewModel;
-    private DatabaseReference firebaseRef;
 
     private TextView speedDisplay;
     private ImageView alertBanner, doorIcon, powerIcon, fuelIcon;
@@ -33,8 +28,7 @@ public class SpeedTestActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_speed_test);
 
-        // Initialize Firebase and ViewModel
-        firebaseRef = FirebaseDatabase.getInstance().getReference("users");
+        // Initialize ViewModel
         speedViewModel = new ViewModelProvider(this).get(SpeedViewModel.class);
 
         // Bind UI components
@@ -44,12 +38,6 @@ public class SpeedTestActivity extends AppCompatActivity {
         powerIcon = findViewById(R.id.power);
         fuelIcon = findViewById(R.id.fuel);
 
-        // Start observing data
-        observeSpeedData();
-        observeAdditionalVehicleData();
-    }
-
-    private void observeSpeedData() {
         speedViewModel.ObserveVehicleSpeed().observe(this, speed -> {
             updateSpeedDisplay(speed);
             if (speed > getOEMVehicleSpeed()) {
@@ -58,44 +46,18 @@ public class SpeedTestActivity extends AppCompatActivity {
                 hideAlert();
             }
         });
+
+        speedViewModel.getOdometer().observe(this, this::updateOdometer);
+        speedViewModel.getDoorStatus().observe(this, this::updateDoorStatus);
+        speedViewModel.getIgnitionState().observe(this, this::updateIgnitionState);
+        speedViewModel.getFuelLevel().observe(this, this::updateFuelLevel);
     }
 
     private float getOEMVehicleSpeed() {
-        final float[] oemSpeed = {0.0f};
-        firebaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    oemSpeed[0] = userSnapshot.child("speed").getValue(Float.class);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                System.err.println(error.toException());
-            }
-        });
-        return oemSpeed[0];
+        return 0;
     }
 
-    private void observeAdditionalVehicleData() {
-        firebaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    updateDoorStatus(userSnapshot.child("doorPosition").getValue(Integer.class));
-                    updateIgnitionState(userSnapshot.child("ignitionState").getValue(Integer.class));
-                    updateFuelLevel(userSnapshot.child("fuelLevel").getValue(Float.class));
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                System.err.println(error.toException());
-            }
-        });
-    }
-
+    @SuppressLint("DefaultLocale")
     private void updateSpeedDisplay(float speed) {
         speedDisplay.setText(String.format("%d km/h", (int) speed));
     }
@@ -106,6 +68,10 @@ public class SpeedTestActivity extends AppCompatActivity {
 
     private void hideAlert() {
         alertBanner.setVisibility(View.GONE);
+    }
+
+    private void updateOdometer(float odometer) {
+        // Update odometer UI here if required
     }
 
     private void updateDoorStatus(int doorPosition) {

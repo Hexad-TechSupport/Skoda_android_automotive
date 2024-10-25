@@ -5,7 +5,7 @@ import android.car.hardware.property.CarPropertyManager;
 import android.util.Log;
 
 import com.automotive.infotainment.interfaces.IBasePropertyHandler;
-import com.automotive.infotainment.repository.SpeedRepository;
+import com.automotive.infotainment.data.repository.SpeedRepository;
 import com.automotive.infotainment.utility.VhalConstant;
 
 import java.util.ArrayList;

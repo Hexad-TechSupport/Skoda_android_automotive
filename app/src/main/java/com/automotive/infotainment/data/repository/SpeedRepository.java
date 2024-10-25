@@ -1,15 +1,25 @@
-package com.automotive.infotainment.repository;
+package com.automotive.infotainment.data.repository;
 
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+
+import com.automotive.infotainment.data.api.RetrofitInstance;
+import com.automotive.infotainment.data.api.UserApi;
+import com.automotive.infotainment.data.model.VehicleData;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SpeedRepository {
 
     public static String TAG = SpeedRepository.class.getName();
 
     private static SpeedRepository repository;
+    private final UserApi userApi;
 
     // LiveData to store vehicle speed and odometer values
     private final MutableLiveData<Float> speedInMiles = new MutableLiveData<>();
@@ -28,6 +38,34 @@ public class SpeedRepository {
             }
             return repository;
         }
+    }
+
+    private SpeedRepository() {
+        userApi = RetrofitInstance.INSTANCE.getApi();
+    }
+
+    // Method to fetch vehicle data from the API
+    public void fetchVehicleData() {
+        userApi.getVehicleData().enqueue(new Callback<VehicleData>() {
+            @Override
+            public void onResponse(Call<VehicleData> call, Response<VehicleData> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    VehicleData vehicleData = response.body();
+                    setSpeedInMiles(vehicleData.getSpeed()); // Assuming speed is in km/h
+                    setOdometer(vehicleData.getOdometer());
+                    setDoorStatus(vehicleData.getDoorPosition());
+                    setIgnitionState(vehicleData.getIgnitionState());
+                    setFuelLevel(vehicleData.getFuelLevel());
+                } else {
+                    Log.e(TAG, "Failed to fetch vehicle data: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VehicleData> call, Throwable t) {
+                Log.e(TAG, "API call failed: " + t.getMessage());
+            }
+        });
     }
 
     // Getter for speed in miles
