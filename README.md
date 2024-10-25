@@ -1,4 +1,4 @@
-# Škoda Android App Project
+# Škoda Android Automotive App Project
 
 ## Overview
 The Škoda Android Automotive App is designed for use in Škoda vehicles, enhancing the driving experience by integrating key vehicle features directly into the car's infotainment system. This app is built specifically for Android Automotive OS, focusing on safety, vehicle status monitoring, and infotainment integration.
